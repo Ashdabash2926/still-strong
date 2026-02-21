@@ -283,6 +283,34 @@
       background: var(--cream);
     }
 
+    /* ── HERO PHOTO: Breathing zoom ── */
+    .hero-photo-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-photo-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1545389336-cf090694435e?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      animation: hero-breathe 20s ease-in-out infinite;
+      transform-origin: center center;
+    }
+    @keyframes hero-breathe {
+      0%,  100% { transform: scale(1.0)  translateX(0%); }
+      33%        { transform: scale(1.07) translateX(-1.2%); }
+      66%        { transform: scale(1.03) translateX(1.2%); }
+    }
+    .hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 249, 246, 0.62);
+      z-index: 1;
+    }
+
     .hero-blob-1 {
       position: absolute;
       width: 65vw;
@@ -668,7 +696,13 @@
   <!-- ─── HERO ──────────────────────────────────────────────────────── -->
   <section id="hero" style="padding:0;">
 
-    <!-- Breathing blobs -->
+    <!-- Hero photo: breathing zoom -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-img"></div>
+    </div>
+    <div class="hero-photo-overlay"></div>
+
+    <!-- Breathing blobs (overlaid on photo) -->
     <div class="hero-blob-1 hero-gradient-1"></div>
     <div class="hero-blob-2 hero-gradient-2"></div>
 
